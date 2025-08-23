@@ -7,15 +7,15 @@ const albumSchema = new mongoose.Schema({
     },
     artist: {
         type: String,
-        required: true
+        required: true,
     },
     imageUrl: {
         type: String,
-        required: true
+        required: true,
     },
     releaseYear: {
         type: Number,
-        required: true
+        required: true,
     },
     songs: [{
         type: mongoose.Schema.Types.ObjectId,

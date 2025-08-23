@@ -3,15 +3,15 @@ import mongoose from "mongoose";
 const messageSchema = new mongoose.Schema({
     senderId: {
         type: String,
-        required: true
+        required: true,
     },
     receiverId: {
         type: String,
-        required: true
+        required: true,
     },
     content: {
         type: String,
-        required: true
+        required: true,
     },
 }, { timestamps: true });
 
