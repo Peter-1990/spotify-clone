@@ -4,7 +4,8 @@ import { checkAdmin, createAlbum, createSong, deleteAlbum, deleteSong } from "..
 
 const router = Router();
 
-router.use(protectRoute, requireAdmin);
+router.use(protectRoute);
+router.use(requireAdmin);
 
 router.get("/check", checkAdmin);
 
