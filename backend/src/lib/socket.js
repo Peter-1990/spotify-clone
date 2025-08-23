@@ -67,7 +67,7 @@ export const initializeSocket = (server) => {
 			}
 			if (disconnectedUserId) {
 				io.emit("user_disconnected", disconnectedUserId);
-			}
+			};
 		});
 	});
 };
