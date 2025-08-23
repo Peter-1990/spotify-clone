@@ -7,10 +7,8 @@ import { useChatStore } from '@/stores/useChatStore';
 
 
 const updateApiToken = async (token: string | null) => {
-    if (token)
-        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-    else
-        delete axiosInstance.defaults.headers.common['Authorization']
+    if (token) axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`
+    else delete axiosInstance.defaults.headers.common["Authorization"];
     
 };
 
@@ -32,7 +30,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
                 }
               
              
-            } catch (error) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } catch (error: any) {
                 updateApiToken(null);
                 console.log("Error in auth provider", error)
             } finally {
@@ -50,11 +49,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             <Loader className="size-8 text-emerald-500 animate-spin" />
         </div>
     )
-    return (
-        <>
-            {children}
-        </>
-    )
+    return <>{children}</>
+    
 };
 
-export default AuthProvider
+export default AuthProvider;
