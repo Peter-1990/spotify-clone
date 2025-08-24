@@ -47,6 +47,17 @@ app.use(
 	})
 );
 
+// ⭐⭐⭐ ADDED DEBUG CODE TO CATCH MALFORMED ROUTES ⭐⭐⭐
+const originalUse = app.use;
+app.use = function(path, ...args) {
+    if (typeof path === 'string' && path.includes(':/') && !path.match(/:\w+/)) {
+        console.error('⚠️  Malformed route detected:', path);
+        throw new Error(`Malformed route path: ${path}`);
+    }
+    return originalUse.call(this, path, ...args);
+};
+// ⭐⭐⭐ END DEBUG CODE ⭐⭐⭐
+
 // cron jobs
 const tempDir = path.join(process.cwd(), "tmp");
 cron.schedule("0 * * * *", () => {
